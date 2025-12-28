@@ -10,6 +10,8 @@
 
     <style>
         body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
             background-image: url('bg1.png');
             background-size: cover;
             background-position: center;
@@ -32,9 +34,225 @@
             transform: scale(1.05);
         }
 
-        .btn-container:hover {
+        .btn-container:hover,
+        .btn-outline-highlight:hover {
             transform: scale(1.05);
             background-color: rgb(25, 231, 56);
+            box-shadow: 0 0 20px #2CFF41;
+        }
+
+        .btn-highlight,
+        .btn-outline-highlight {
+            padding: 10px 25px;
+            background-color: #2CFF41;
+            color: #000;
+            border: 2px solid #2CFF41;
+            font-weight: 600;
+            border-radius: 25px;
+            margin-top: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .profile-img {
+            max-width: 250px;
+            border-radius: 50%;
+            border: 3px solid #2CFF41;
+        }
+
+        /*Animation */
+        .profile-img {
+            position: relative;
+            z-index: 2;
+            border-radius: 50%;
+            border: 3px solid #2CFF41;
+            animation: pulse 3s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 20px #2CFF41;
+            }
+
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 40px #2CFF41;
+            }
+        }
+
+        #typed-title {
+            color: #2CFF41;
+            font-weight: 600;
+        }
+
+        #typed-title::after {
+            content: '|';
+            display: inline-block;
+            margin-left: 2px;
+            animation: blink 0.7s infinite;
+            color: #2CFF41;
+        }
+
+        @keyframes blink {
+
+            0%,
+            50%,
+            100% {
+                opacity: 1;
+            }
+
+            25%,
+            75% {
+                opacity: 0;
+            }
+        }
+
+        .container-hero {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 75vh;
+            padding: 60px;
+            margin-top: 100px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        /* Techy particles*/
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        /* Single particle*/
+        .hero-bg canvas {
+            display: block;
+        }
+
+        .project-card {
+            position: relative;
+            background: rgba(0, 0, 0, 0.65);
+            border: 1px solid rgba(44, 255, 65, 0.4);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+        }
+
+        .project-preview {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .project-preview iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: brightness(0.85);
+        }
+
+        .project-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom,
+                    rgba(0, 0, 0, 0.1),
+                    rgba(0, 0, 0, 0.85));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2CFF41;
+        }
+
+        .tech-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin: 3px 3px 8px 0;
+            background: rgba(44, 255, 65, 0.15);
+            border: 1px solid #2CFF41;
+            color: #9dff8e;
+        }
+
+        .project-actions a {
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            transition: 0.3s;
+        }
+
+        .contact-item:hover {
+            box-shadow: 0 0 20px #2CFF41;
+            transform: translateY(-3px);
+        }
+
+        .contact-item i {
+            font-size: 1.8rem;
+            color: #2CFF41;
+        }
+
+        .contact-item h6 {
+            margin: 0;
+            color: #2CFF41;
+            font-weight: 600;
+        }
+
+        .contact-item p,
+        .contact-item a {
+            margin: 0;
+            color: #d4ffd4;
+            font-size: 0.9rem;
+            text-decoration: none;
+        }
+
+        .contact-input {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(44, 255, 65, 0.4);
+            color: #fff;
+            border-radius: 12px;
+        }
+
+        .contact-input:focus {
+            background: rgba(0, 0, 0, 0.8);
+            border-color: #2CFF41;
+            box-shadow: 0 0 15px #2CFF41;
+            color: #fff;
         }
     </style>
 </head>
@@ -56,186 +274,250 @@
                     <li class="nav-item"><a class="nav-link text-glow" href="#">Home</a></li>
                     <li class="nav-item"><a class="nav-link text-glow" href="#About">About Me</a></li>
                     <li class="nav-item"><a class="nav-link text-glow" href="#Projects">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link text-glow" href="#Skills">Skills</a></li>
                     <li class="nav-item"><a class="nav-link text-glow" href="#Contact">Contact</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col">
-            </div>
+
+
+    <div class="container container-hero position-relative">
+        <div class="hero-bg">
+            <canvas id="particle-canvas"></canvas>
         </div>
-    </div>
-    <div class="container mt-5 pt-5">
-        <div class="row align-items-center text-light shadow-lg p-1 g-3 px-2"
-            style="background-color: rgba(255,255,255,0.1); border-radius:20px; backdrop-filter:blur(35px); border: 1px solid rgba(255,255,255,0.3);">
 
-            <div class="col-md-6 text-center">
-                <img src="Sarah.jpg" alt="Sarah Cassandra Macalilong"
-                    class="img-fluid rounded-circle border border-success border-3" style="max-width: 300px;">
-            </div>
-            <div class="col-md-6 text-start pt-5">
-                <h4 class="text-glow mt-3">Hello! I'm</h4>
-                <h1 class="text-glow mb-3">Sarah Cassandra</h1>
-                <h5 class="text-glow ">Aspiring Web Developer</h5>
-                <p class="text-glow mt-4 mb-5"> BS Information Technology Student</p>
+        <div class="row align-items-center text-light shadow-lg p-1 g-3 px-2">
 
-                <div class="d-flex gap-3 pb-5">
-                    <div class="btn-container px-4 py-2"
-                        style="background-color: rgb(44, 255, 65); color: black; border-radius: 30px; cursor: pointer; font-weight: 600; transition: 0.3s;">
-                        View Portfolio
-                    </div>
-                    <div class="btn-container px-4 py-2"
-                        style="background-color: transparent; border: 2px solid rgb(44, 255, 65); color: rgb(44, 255, 65); border-radius: 30px; cursor: pointer; font-weight: 600; transition: 0.3s;">
-                        Contact Me
-                    </div>
+            <div class="col-md-6 hero-info">
+                <h2>Hello, I'm</h2>
+                <h1>Sarah Cassandra</h1>
+
+                <h4 class="text-highlight"><span id="typed-title"></span></h4>
+                <p>BS Information Technology Student at Polytechnic University of the Philippines, Sto. Tomas Campus</p>
+                <p>Passionate about learning, coding interactive websites, and exploring new technologies.</p>
+                <p>
+                    <i class="bi bi-envelope-fill"></i> macalilongsarahcassandra@gmail.com |
+                    <i class="bi bi-telephone-fill"></i> 0993-143-4651
+                </p>
+                <div class="mt-3">
+                    <a href="#" class="btn btn-highlight me-2">View Portfolio</a>
+                    <a href="#Contact" class="btn btn-outline-highlight">Contact Me</a>
                 </div>
             </div>
+            <div class="col-md-6 text-center hero-img">
+                <img src="Sarah.jpg" alt="Sarah Cassandra" class="profile-img img-fluid">
+            </div>
+
         </div>
     </div>
-    
 
     <div class="container pt-5" id="About">
-        <div class="row text-light p-1">
-            <div class="col">
-               <div class="card shadow-lg m-5 bg-transparent border-0">
-                <div class="card-body text-light shadow-lg m-5 p-4 text-center justify-content-center mx-auto"
-                    style="background: rgba(255, 255, 255, 0);border-radius: 10px;backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.3); width: 80%;">
-                    <div class="text-glow">
-                        <h3>ABOUT ME</h3>
-                        <p>Student of BS Information Technology at Polytechnic University of the
-                            Philippines, Sto. Tomas
-                            Campus.
-                        </p>
-                        <p class="text-center">Eager to learn and grow in the field of IT.</p>
+        <div class="card card-custom p-4 p-md-5 text-light"
+            style="background: rgba(0,0,0,0.65); border: 2px solid #2CFF41; backdrop-filter: blur(15px);">
+
+            <h3 class="mb-5 text-center text-glow">About Me & My Skills</h3>
+
+            <div class="row align-items-center mb-5">
+                <div class="col-md-4 text-center mb-4 mb-md-0">
+                    <img src="Sarah.jpg" alt="Sarah Cassandra" class="profile-img"
+                        style="max-width: 250px; border: 3px solid #2CFF41; box-shadow: 0 0 20px #2CFF41;">
+                </div>
+                <div class="col-md-8">
+                    <p>Hello! I’m <strong>Sarah Cassandra</strong>, a <strong>BS Information Technology student</strong>
+                        at the Polytechnic University of the Philippines, Sto. Tomas Campus. I specialize in creating
+                        <strong>responsive and interactive websites</strong> with clean design and smooth user
+                        experience.
+                    </p>
+                    <p>I’m passionate about learning, exploring new technologies, and using creativity to solve
+                        problems. I continuously strive to improve my skills in <strong>web development, UI/UX design,
+                            and programming.</strong></p>
+                </div>
+            </div>
+
+            <div class="mb-5">
+                <h5 class="text-glow mb-4 text-center">Technical Skills</h5>
+                <div class="row row-cols-1 row-cols-sm-3 row-cols-md-4 text-light p-1 text-center">
+
+                    <div class="col">
+                        <img src="photoshop.png" class="card-img" alt="photoshop">
+                        <p>Photoshop</p>
+                    </div>
+                    <div class="col">
+                        <img src="vscode.png" class="card-img" alt="vscode">
+                        <p>VS Code</p>
+                    </div>
+                    <div class="col">
+                        <img src="github.png" class="card-img" alt="github">
+                        <p>GitHub</p>
                     </div>
                 </div>
             </div>
-        </div>
-        </div>
-        </div>
- <div class="container pt-5" id="About">
-        <div class="row row-cols-1 row-cols-sm-3 row-cols-md-4 text-light p-1">
-        <div class="col">
-            <h5 class="font text-light text-glow text-center mb-4 ">Apps/Tools:</h5>
-            <div class="card text-white text-light text-glow shadow-lg m-2 p-4 text-center justify-content-center mx-auto"
-                style="background: rgba(255, 255, 255, 0.1);border-radius: 10px;backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.3); width: 80%;">
-                <img src="photoshop.png" class="card-img" alt="photoshop">
+
+            <div class="mb-4">
+                <h5 class="text-glow mb-4 text-center">Tools & Software</h5>
+                <div class="row row-cols-1 row-cols-sm-3 row-cols-md-4 g-4 align-items-center text-light p-1 g-3 px-2">
+
+                    <div class="col">
+                        <img src="python.png" class="card-img" alt="python">
+                        <p>Python</p>
+                    </div>
+                    <div class="col">
+                        <img src="html.png" class="card-img" alt="html">
+                        <p>HTML</p>
+                    </div>
+                    <div class="col">
+                        <img src="css.png" class="card-img" alt="css">
+                        <p>CSS</p>
+                    </div>
+                    <div class="col">
+                        <img src="sql.png" class="card-img" alt="sql">
+                        <p>SQL</p>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="col">
-            <div class="card text-white text-light text-glow shadow-lg m-2 p-4 text-center justify-content-center mx-auto"
-                style="background: rgba(255, 255, 255, 0.1);border-radius: 10px;backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.3); width: 80%;">
-                <img src="vscode.png" class="card-img" alt="vscode">
-            </div>
-        </div>
-        <div class="col">
-            <div class="card text-white text-light text-glow shadow-lg m-2 p-4 text-center justify-content-center mx-auto"
-                style="background: rgba(255, 255, 255, 0.1);border-radius: 10px;backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.3); width: 80%;">
-                <img src="github.png" class="card-img" alt="github">
-            </div>
-        </div>
-    
-        <div class="col">
-            <h5 class="font text-light text-glow text-center mb-4 mt-3">Programming Languages:</h5>
-            <div class="card text-white text-light text-glow shadow-lg m-2 p-4 text-center justify-content-center mx-auto"
-                style="background: rgba(255, 255, 255, 0.1);border-radius: 10px;backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.3); width: 80%;">
-                <img src="python.png" class="card-img" alt="python">
-            </div>
-        </div>
-        <div class="col">
-            <div class="card text-white text-light text-glow shadow-lg m-2 p-4 text-center justify-content-center mx-auto"
-                style="background: rgba(255, 255, 255, 0.1);border-radius: 10px;backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.3); width: 80%;">
-                <img src="html.png" class="card-img" alt="html">
-            </div>
-        </div>
-        <div class="col">
-            <div class="card text-white text-light text-glow shadow-lg m-2 p-4 text-center justify-content-center mx-auto"
-                style="background: rgba(255, 255, 255, 0.1);border-radius: 10px;backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.3); width: 80%;">
-                <img src="css.png" class="card-img" alt="css">
-            </div>
-        </div>
-        <div class="col">
-            <div class="card text-white text-light text-glow shadow-lg m-2 p-4 text-center justify-content-center mx-auto"
-                style="background: rgba(255, 255, 255, 0.1);border-radius: 10px;backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.3); width: 80%;">
-                <img src="sql.png" class="card-img" alt="sql">
+            <div class="mt-4 text-center">
+                <p>"I believe in continuous learning, embracing challenges, and turning ideas into functional and
+                    beautiful digital experiences."</p>
             </div>
         </div>
     </div>
-    </div>
 
-    <div class="container pt-5" id="Projects">
-        <h1 id="activities" class="font mt-5 text-light text-glow text-center mb-4">ACTIVITIES/PROJECTS</h1>
-        <div class="row row-cols-1 row-cols-md-3 g-4 align-items-center text-light p-1 g-3 px-2">
+    <div class="container mt-5" id="Projects">
+        <h3 class="mb-5 text-center text-glow">Featured Projects</h3>
 
-            <div class="col">
-                <div class="card text-white text-light text-glow shadow-lg m-2 p-4 text-center justify-content-center mx-auto"
-                    style="background: rgba(255, 255, 255, 0.1);border-radius: 10px;backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.3); width: 80%;">
-
-                    <iframe src="https://sarahcassandra.github.io/product_showcase/" width="100%" height="200px"
-                        style="border: none; border-radius: 10px;">
-                    </iframe>
-
-                    <br>
-
-                    <a href="https://sarahcassandra.github.io/product_showcase/" target="_blank"
-                        style="display:inline-block; padding:10px 20px; background:rgb(44, 255, 65); color:rgb(0, 0, 0); text-decoration:none; border-radius:8px; font-size:16px;">
-                        Open Asus Page
-                    </a>
-                </div>
-            </div>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
 
             <div class="col">
-                <div class="card text-white text-light text-glow shadow-lg m-2 p-4 text-center justify-content-center mx-auto"
-                    style="background: rgba(255, 255, 255, 0.1);border-radius: 10px;backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.3); width: 80%;">
+                <div class="project-card">
+                    <div class="project-preview">
+                        <iframe src="https://sarahcassandra.github.io/product_showcase/" width="100%" height="200px"
+                            style="border: none; border-radius: 10px;">
+                        </iframe>
+                        <div class="project-overlay"></div>
+                    </div>
 
-                    <iframe src="https://sarahcassandra.github.io/country_Switzerland/" width="100%" height="200px"
-                        style="border: none; border-radius: 10px;">
-                    </iframe>
+                    <div class="project-content">
+                        <h5 class="project-title">Product Showcase Website</h5>
+                        <p class="project-desc">
+                            A responsive product showcase website focusing on layout, branding,
+                            and user-friendly navigation.
+                        </p>
 
-                    <br>
+                        <div>
+                            <span class="tech-badge">HTML</span>
+                            <span class="tech-badge">CSS</span>
+                            <span class="tech-badge">Bootstrap</span>
+                        </div>
 
-                    <a href="https://sarahcassandra.github.io/country_Switzerland/" target="_blank"
-                        style="display:inline-block; padding:10px 20px; background:rgb(44, 255, 65); color:rgb(0, 0, 0); text-decoration:none; border-radius:8px; font-size:16px;">
-                        Open Switzerland Page
-                    </a>
+                        <div class="project-actions">
+                            <a href="https://sarahcassandra.github.io/product_showcase/" target="_blank"
+                                class="btn btn-highlight mt-3">
+                                Open Asus Page
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="col">
-                <div class="card text-white text-light text-glow shadow-lg m-2 p-4 text-center justify-content-center mx-auto"
-                    style="background: rgba(255, 255, 255, 0.1);border-radius: 10px;backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.3); width: 80%;">
+                <div class="project-card">
+                    <div class="project-preview">
+                        <iframe src="https://sarahcassandra.github.io/country_Switzerland/" width="100%" height="200px"
+                            style="border: none; border-radius: 10px;">
+                        </iframe>
+                        <div class="project-overlay"></div>
+                    </div>
 
-                    <iframe src="https://sarahcassandra.github.io/flower_gallery/" width="100%" height="200px"
-                        style="border: none; border-radius: 10px;">
-                    </iframe>
+                    <div class="project-content">
+                        <h5 class="project-title">Switzerland Country Page</h5>
+                        <p class="project-desc">
+                            An interactive country information page highlighting design,
+                            layout structure, and basic interactivity.
+                        </p>
 
-                    <br>
+                        <div>
+                            <span class="tech-badge">HTML</span>
+                            <span class="tech-badge">CSS</span>
+                            <span class="tech-badge">Bootstrap</span>
+                        </div>
 
-                    <a href="https://sarahcassandra.github.io/flower_gallery/" target="_blank"
-                        style="display:inline-block; padding:10px 20px; background:rgb(44, 255, 65); color:rgb(0, 0, 0); text-decoration:none; border-radius:8px; font-size:16px;">
-                        Open Flower Gallery Page
-                    </a>
+                        <div class="project-actions">
+                            <a href="https://sarahcassandra.github.io/country_Switzerland/" target="_blank"
+                                class="btn btn-highlight mt-3">
+                                Open Switzerland Page
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-             <div class="col">
-                <div class="card text-white text-light text-glow shadow-lg m-2 p-4 text-center justify-content-center mx-auto"
-                    style="background: rgba(255, 255, 255, 0.1);border-radius: 10px;backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.3); width: 80%;">
 
-                    <iframe src="https://sarahcassandra.github.io/dragonball_api/" width="100%" height="200px"
-                        style="border: none; border-radius: 10px;">
-                    </iframe>
+            <div class="col">
+                <div class="project-card">
+                    <div class="project-preview">
+                        <iframe src="https://sarahcassandra.github.io/flower_gallery/" width="100%" height="200px"
+                            style="border: none; border-radius: 10px;">
+                        </iframe>
+                        <div class="project-overlay"></div>
+                    </div>
 
-                    <br>
+                    <div class="project-content">
+                        <h5 class="project-title">Flower Gallery</h5>
+                        <p class="project-desc">
+                            A modern gallery website using JSON data to dynamically display
+                            content with clean visual structure.
+                        </p>
 
-                    <a href="https://sarahcassandra.github.io/dragonball_api/" target="_blank"
-                        style="display:inline-block; padding:10px 20px; background:rgb(44, 255, 65); color:rgb(0, 0, 0); text-decoration:none; border-radius:8px; font-size:16px;">
-                        Open Dragonball Gallery Page
-                    </a>
+                        <div>
+                            <span class="tech-badge">HTML</span>
+                            <span class="tech-badge">CSS</span>
+                            <span class="tech-badge">Bootstrap</span>
+                            <span class="tech-badge">JSON</span>
+                        </div>
+
+                        <div class="project-actions">
+                            <a href="https://sarahcassandra.github.io/flower_gallery/" target="_blank"
+                                class="btn btn-highlight mt-3">
+                                Open Flower Gallery Page
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <div class="col">
+                <div class="project-card">
+                    <div class="project-preview">
+                        <iframe src="https://sarahcassandra.github.io/dragonball_api/" width="100%" height="200px"
+                            style="border: none; border-radius: 10px;">
+                        </iframe>
+                        <div class="project-overlay"></div>
+                    </div>
+
+                    <div class="project-content">
+                        <h5 class="project-title">Dragon Ball API Gallerye</h5>
+                        <p class="project-desc">
+                            An API-powered character gallery demonstrating dynamic data fetching
+                            and responsive card layouts.
+                        </p>
+
+                        <div>
+                            <span class="tech-badge">API</span>
+                            <span class="tech-badge">HTML</span>
+                            <span class="tech-badge">CSS</span>
+                            <span class="tech-badge">Bootstrap</span>
+                            <span class="tech-badge">JavaScript</span>
+                        </div>
+
+                        <div class="project-actions">
+                            <a href="https://sarahcassandra.github.io/dragonball_api/" target="_blank"
+                                class="btn btn-highlight mt-3">
+                                Open Dragonball API Page
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -256,23 +538,70 @@
         </div>
     </div>
 
-    <div class="container" id="Contact">
-        <div class="row align-items-center text-light p-1 g-3 px-2">
-            <div class="col">
-                <div class="card-body text-light shadow-lg p-3 text-center justify-content-center mx-auto"
-                    style="background: rgba(255, 255, 255, 0.1);border-radius: 10px;backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.3); width: 80%;">
-                    <div class="text-glow">
-                        <h3>Contact Me</h3>
-                        <p></p>
-                        <p>Contact Number: 09931434651</p>
-                        <p>Email: macalilongsarahcassandra@gmail.com </p>
-                        <p>Social Media: Sarah Cassandra Macalilong </p>
-                        <p>GitHub: https://github.com/SarahCassandra </p>
-                        <p> Feel free to reach out! I'm open to collaborations and project opportunities!</p>
+    <div class="container mt-5 mb-5" id="Contact">
+        <div class="card card-custom p-4 p-md-5"
+            style="background: rgba(0,0,0,0.65); border: 2px solid #2CFF41; backdrop-filter: blur(15px);">
+
+            <h3 class="text-center text-glow mb-3">Contact Me</h3>
+            <p class="text-center mb-5 text-light">
+                Interested in collaborating, hiring, or discussing a project?
+                I’d love to hear from you.
+            </p>
+
+            <div class="row g-4">
+
+                <div class="col md-5">
+                    <div class="contact-item mb-4">
+                        <i class="bi bi-telephone-fill"></i>
+                        <div>
+                            <h6>Phone</h6>
+                            <p>0993-143-4651</p>
+                        </div>
                     </div>
+
+                    <div class="contact-item mb-4">
+                        <i class="bi bi-envelope-fill"></i>
+                        <div>
+                            <h6>Email</h6>
+                            <p>macalilongsarahcassandra@gmail.com </p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item mb-4">
+                        <i class="bi bi-envelope-fill"></i>
+                        <div>
+                            <h6>Socials</h6>
+                            <p>Sarah Cassandra Macalilong </p>
+                        </div>
+                    </div>
+                    <div class="contact-item mb-4">
+                        <i class="bi bi-github"></i>
+                        <div>
+                            <h6>GitHub</h6>
+                            <p>https://github.com/SarahCassandra </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-7">
+                    <form>
+                        <div class="mb-3">
+                            <input type="text" class="form-control contact-input" placeholder="Your Name" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control contact-input" placeholder="Your Email" required>
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control contact-input" rows="4" placeholder="Your Message"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-highlight w-100">
+                            Send Message
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <footer class="container-fluid z-3 m-2 p-2 g-0 bg-transparent text-light shadow-lg">
@@ -282,6 +611,113 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
+    <script>
+        // Typed Text Rotation
+        const titles = ["Aspiring Web Developer", "Front-End Enthusiast", "Creative Coder", "Tech Explorer"];
+        let titleIndex = 0, charIndex = 0;
+        const typedTitle = document.getElementById("typed-title");
+        const typingSpeed = 100, erasingSpeed = 50, delayBetween = 2000;
+        function type() {
+            if (charIndex < titles[titleIndex].length) {
+                typedTitle.textContent += titles[titleIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(type, typingSpeed);
+            } else setTimeout(erase, delayBetween);
+        }
+        function erase() {
+            if (charIndex > 0) {
+                typedTitle.textContent = titles[titleIndex].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(erase, erasingSpeed);
+            } else {
+                titleIndex = (titleIndex + 1) % titles.length;
+                setTimeout(type, typingSpeed);
+            }
+        }
+        window.addEventListener("load", type);
+
+        // Particle Canvas
+        const canvas = document.getElementById("particle-canvas");
+        const ctx = canvas.getContext("2d");
+        let particlesArray = [];
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight * 0.75;
+
+        // Particle class
+        class Particle {
+            constructor(x, y, dx, dy, radius) {
+                this.x = x;
+                this.y = y;
+                this.dx = dx;
+                this.dy = dy;
+                this.radius = radius;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+                ctx.fillStyle = "#2CFF41";
+                ctx.fill();
+            }
+            update() {
+                if (this.x + this.radius > canvas.width || this.x - this.radius < 0) this.dx = -this.dx;
+                if (this.y + this.radius > canvas.height || this.y - this.radius < 0) this.dy = -this.dy;
+                this.x += this.dx;
+                this.y += this.dy;
+                this.draw();
+            }
+        }
+
+        // Initialize particles
+        function initParticles() {
+            particlesArray = [];
+            for (let i = 0; i < 80; i++) {
+                let radius = Math.random() * 2 + 1;
+                let x = Math.random() * (canvas.width - radius * 2) + radius;
+                let y = Math.random() * (canvas.height - radius * 2) + radius;
+                let dx = (Math.random() - 0.5) * 1.5;
+                let dy = (Math.random() - 0.5) * 1.5;
+                particlesArray.push(new Particle(x, y, dx, dy, radius));
+            }
+        }
+        initParticles();
+
+        // Draw lines between close particles
+        function connectParticles() {
+            for (let a = 0; a < particlesArray.length; a++) {
+                for (let b = a; b < particlesArray.length; b++) {
+                    let dx = particlesArray[a].x - particlesArray[b].x;
+                    let dy = particlesArray[a].y - particlesArray[b].y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < 100) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = "rgba(44,255,65," + (1 - distance / 100) + ")";
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.stroke();
+                        ctx.closePath();
+                    }
+                }
+            }
+        }
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particlesArray.forEach(p => p.update());
+            connectParticles();
+        }
+        animate();
+
+        // Responsive
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight * 0.75;
+            initParticles();
+        });
+    </script>
 </body>
 
 </html>
